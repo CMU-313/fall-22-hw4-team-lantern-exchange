@@ -16,6 +16,16 @@ def test_base_route():
 
     assert response.status_code == 200
     assert response.get_data() == b'try the predict route it is great!'
+ 
+#tests if content received is in json format
+def test_base_content(): 
+    app = Flash(__name__)
+    configure_routes(app)
+    client = app.test_client()
+    url = '/'
+    
+    response = client.get('/')
+    assert response.content_type == "application/json"
 
 def test_predict_route():
     app = Flask(__name__)
