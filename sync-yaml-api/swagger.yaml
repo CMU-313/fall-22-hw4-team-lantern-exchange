@@ -1,0 +1,172 @@
+openapi: 3.0.0
+info:
+  title: Simple ML Microservice API
+  description: This is a ML Microservice API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/TeamLanternExchange/HW04/1.0.0
+  description: ML Microservice API
+tags:
+- name: admins
+  description: Secured Admin-only calls
+- name: developers
+  description: Operations available to regular developers
+paths:
+  /predict:
+    post:
+      tags:
+      - hw4_predict
+      summary: predicts performance of a student
+      description: |
+        By passing the student attributes, you can get the prediction of student performance.
+      operationId: predictPerformance
+      requestBody:
+        description: a query json that contains the student attributes
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentAttributes'
+      responses:
+        "200":
+          description: querry json matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictionResult'
+        "400":
+          description: bad input parameter
+components:
+  schemas:
+    StudentAttributes:
+      required:
+      - absences
+      - activities
+      - address
+      - age
+      - dalc
+      - failures
+      - famrel
+      - famsup
+      - fedu
+      - fjob
+      - freetime
+      - goout
+      - health
+      - higher
+      - internet
+      - medu
+      - mjo
+      - nursery
+      - paid
+      - pstatus
+      - reason
+      - romantic
+      - schoolsup
+      - studytime
+      - traveltime
+      - walc
+      type: object
+      properties:
+        age:
+          type: integer
+          format: int64
+          example: 22
+        address:
+          type: string
+          example: U
+        pstatus:
+          type: string
+          example: T
+        medu:
+          type: integer
+          format: int64
+          example: 4
+        fedu:
+          type: integer
+          format: int64
+          example: 4
+        mjob:
+          type: string
+          example: at_home
+        fjob:
+          type: string
+          example: teacher
+        reason:
+          type: string
+          example: home
+        traveltime:
+          type: integer
+          format: int64
+          example: 4
+        studytime:
+          type: integer
+          format: int64
+          example: 4
+        failures:
+          type: integer
+          format: int64
+          example: 4
+        schoolsup:
+          type: string
+          example: "yes"
+        famsup:
+          type: string
+          example: "yes"
+        paid:
+          type: string
+          example: "yes"
+        activities:
+          type: string
+          example: "yes"
+        nursery:
+          type: string
+          example: "yes"
+        higher:
+          type: string
+          example: "yes"
+        internet:
+          type: string
+          example: "yes"
+        romantic:
+          type: string
+          example: "yes"
+        famrel:
+          type: integer
+          format: int64
+          example: 5
+        freetime:
+          type: integer
+          format: int64
+          example: 5
+        goout:
+          type: integer
+          format: int64
+          example: 5
+        dalc:
+          type: integer
+          format: int64
+          example: 5
+        walc:
+          type: integer
+          format: int64
+          example: 5
+        health:
+          type: integer
+          format: int64
+          example: 5
+        absences:
+          type: integer
+          format: int64
+          example: 93
+    PredictionResult:
+      required:
+      - prediction
+      type: object
+      properties:
+        prediction:
+          type: integer
+          format: int64
+          example: 1
