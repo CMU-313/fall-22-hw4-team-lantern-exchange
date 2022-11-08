@@ -18,7 +18,7 @@ def configure_routes(app):
     @app.route('/predict', methods=['POST'])
     def predict():
         """
-        Below is a example POST request using curl:
+        Below is an example POST request using curl:
             curl -X 'POST' '127.0.0.1:5000/predict' -H 'accept: application/json' \
                 -H 'Content-Type: application/json' -d \
                     '{"school": "GP",
