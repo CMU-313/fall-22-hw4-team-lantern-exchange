@@ -42,61 +42,26 @@ components:
   schemas:
     StudentAttributes:
       required:
+      - Dalc
+      - Walc
       - absences
       - activities
-      - address
-      - age
-      - dalc
       - failures
-      - famrel
-      - famsup
-      - fedu
-      - fjob
       - freetime
       - goout
       - health
       - higher
       - internet
-      - medu
-      - mjo
       - nursery
       - paid
-      - pstatus
-      - reason
-      - romantic
-      - schoolsup
+      - school
       - studytime
       - traveltime
-      - walc
       type: object
       properties:
-        age:
-          type: integer
-          format: int64
-          example: 22
-        address:
+        school:
           type: string
-          example: U
-        pstatus:
-          type: string
-          example: T
-        medu:
-          type: integer
-          format: int64
-          example: 4
-        fedu:
-          type: integer
-          format: int64
-          example: 4
-        mjob:
-          type: string
-          example: at_home
-        fjob:
-          type: string
-          example: teacher
-        reason:
-          type: string
-          example: home
+          example: GP
         traveltime:
           type: integer
           format: int64
@@ -109,12 +74,6 @@ components:
           type: integer
           format: int64
           example: 4
-        schoolsup:
-          type: string
-          example: "yes"
-        famsup:
-          type: string
-          example: "yes"
         paid:
           type: string
           example: "yes"
@@ -130,13 +89,6 @@ components:
         internet:
           type: string
           example: "yes"
-        romantic:
-          type: string
-          example: "yes"
-        famrel:
-          type: integer
-          format: int64
-          example: 5
         freetime:
           type: integer
           format: int64
@@ -145,11 +97,11 @@ components:
           type: integer
           format: int64
           example: 5
-        dalc:
+        Dalc:
           type: integer
           format: int64
           example: 5
-        walc:
+        Walc:
           type: integer
           format: int64
           example: 5
