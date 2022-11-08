@@ -11,6 +11,23 @@ def configure_routes(app):
     model_path = os.path.join(this_dir, "model.pkl")
     model = joblib.load(model_path)
 
+    def _validate_df(df):
+        assert(df["school"][0] in ["GP", "MS"])
+        assert(1 <= df["traveltime"][0] <= 4)
+        assert(1 <= df["studytime"][0] <= 4)
+        assert(0 <= df["failures"][0] <= 4)
+        assert(df["paid"][0] in ["yes", "no"])
+        assert(df["activities"][0] in ["yes", "no"])
+        assert(df["nursery"][0] in ["yes", "no"])
+        assert(df["higher"][0] in ["yes", "no"])
+        assert(df["internet"][0] in ["yes", "no"])
+        assert(1 <= df["freetime"][0] <= 5)
+        assert(1 <= df["goout"][0] <= 5)
+        assert(1 <= df["Dalc"][0] <= 5)
+        assert(1 <= df["Walc"][0] <= 5)
+        assert(1 <= df["health"][0] <= 5)
+        assert(0 <= df["absences"][0] <= 93)
+
     @app.route('/')
     def hello():
         return "try the predict route it is great!"
@@ -40,6 +57,7 @@ def configure_routes(app):
         if request.method == 'POST':
             json_data = request.get_json()
             df = pd.json_normalize(json_data)
+            _validate_df(df)
             yesno_cols = ['paid','activities','nursery','higher','internet']
             school_col = ['school']
             df_num = df[df.columns.difference(yesno_cols)]
