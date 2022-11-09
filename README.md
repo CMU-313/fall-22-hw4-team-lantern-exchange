@@ -2,6 +2,8 @@
 
 Please consult the [homework assignment](https://cmu-313.github.io//assignments/hw4) for additional context and instructions for this code.
 
+Model Information at the Bottom
+
 ## pipenv
 
 [pipenv](https://pipenv.pypa.io/en/latest) is a packaging tool for Python that solves some common problems associated with the typical workflow using pip, virtualenv, and the good old requirements.txt.
@@ -103,3 +105,12 @@ If you're not in the Pipenv shell, then execute the following command from the `
 ```terminal
 pipenv run pytest
 ```
+## Model Structure
+
+The Current Machine Learning model takes in school, travel-time, study-time, number of course failures, paid classes, whether the student participate in activities, attended nursery, intends to pursue higher education, has internet access, goes out with friends, drinks alcohol, and has school absences. We decided on these features since they likely have a correlation with student success while following ethical ideas. 
+
+Since some of these features are categorical variables, we had to do some feature engineering to create one-hot encoding for the categorical variables using the pandas get_dummies function.
+
+We also changed the model type from a Random-Forest Classifier to a Decision Tree Classifier. I chose to change the type since Decision Tree makes better decisions on smaller datasets and there are only 395 data points under training data. After testing various depths, we found a maximum depth of 5 to be the best hyperparameter that maximizes acurracy and the f1 score. 
+
+As a result, the f1 score has increased significantly from .15 to around .40 while maintaining an 80% accuracy, 
