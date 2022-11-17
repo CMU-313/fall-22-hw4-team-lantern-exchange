@@ -16,6 +16,7 @@ pandas = "*"
 numpy = "*"
 sklearn = "*"
 joblib = "*"
+ipykernel = "*"
 
 [requires]
 python_version = "3.8"
